@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- ============================================================  Required meta tags ========================================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+  <!-- added from assets folder -->
+
+  <!-- ================================================================ TITLE ====================================================== -->
+  <title>Home | Ticker </title>
+
+
+<!-- 
+    Documentation
+    Used js & jquery
+
+variable controlTicker is for control the main startTicker function using repeatedly 
+
+Function startTicker basically doing the main content sliding up and add to the down of the unorder list
+
+Funciton stopTicker is use for stop the ticker for variaous perpuse
+
+Function hoverIn is just a mouse hover effect on our body.
+same as hoverIn , hoverOut function is the reverse process of function hoverIn.
+
+
+-->
+
+  <script>
+      var controlTicker;
+      function startTicker(){
+          $("#news li:first").slideUp(function(){
+          $(this).appendTo($("#news")).slideDown();
+      });
+      }
+
+      function stopTicker(){
+          clearInterval(controlTicker);
+      }
+
+      function hoverIn(){
+          stopTicker();
+      }
+      function hoverOut(){
+        controlTicker=setInterval(startTicker, 1000);
+      }
+
+      
+
+    controlTicker=setInterval(startTicker, 1000);
+  </script>
+
+</head>
+<body>
+
+<ul id="news" onmouseover="hoverIn(this)" onmouseout="hoverOut(this)">
+    <li>this is mishel</li>
+    <li>this is mobin</li>
+    <li>this is akash</li>
+    <li>this is jamil</li>
+    <li>this is ehsan</li>
+    <li>this is kamal</li>
+    <li>this is hasina</li>
+    <li>this is khaleda</li>
+    <li>this is mishu</li>
+    <li>this is nafiur</li>
+    <li>this is sadek</li>
+
+</ul>
+
+
+
+  <!-- ======================================================================== Start Script import file ================================================= -->
+
+
+  
+  <script src="jquery.min.js"></script>
+ 
+  
+
+  <!-- ========================================================================== End Script import file ===================================================== -->
+
+
+</body>
+
+
+</html>
