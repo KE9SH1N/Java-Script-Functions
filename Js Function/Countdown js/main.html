@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Coming Soon</title>
+	</head>
+	<body>
+		<h1>Coming Soon</h1>
+		<hr>
+
+		<p id ="demo" style="font-size:30px"></p>
+	</body>
+
+	<script>
+		//Set the date we counting down
+		var countDownDate = new Date("june 04, 2020 00:00:00").getTime();  // Format (dyas, date , year , h:m:s ) 
+
+		//update countdown function in every secound
+		var countDownfunction = setInterval(function(){
+
+			//get the current time
+			var now = new Date().getTime();
+
+			//calculate the duration between the expected input from current time
+			var distance = countDownDate - now;
+
+			//days , hours,minutes ,seconds calculatoin 
+			var days = Math.floor(distance/(1000*60*60*24));
+			var hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+
+			var minutes = Math.floor((distance %(1000*60*60))/(1000*60));
+			var seconds = Math.floor((distance % (1000*60))/1000);
+
+			//print output to an element called demo
+
+			document.getElementById("demo").innerHTML = days +"d " + hours + "h " + minutes +"m " + seconds +"s";
+
+			//if distance have negative value then its shows that countdown is end
+
+			if(distance < 0){
+				clearInterval(countDownfunction);
+				document.getElementById("demo").innerHTML = "TIME OUT";
+			}
+
+
+		},1000);
+
+	</script>
+</html>
