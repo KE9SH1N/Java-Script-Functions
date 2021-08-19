@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script type="text/javascript">
+
+    function validateForm(){
+        var x = document.getElementById("username").value.trim();
+        var y = document.getElementById("password").value.trim();
+        
+
+        
+
+        if(x==""){
+            alert("username must be filled out");
+            return false;
+        }
+
+        if(y==""){
+            alert("password must be filled out")
+            return false;
+        }
+        else{
+            return checkInfo();
+        }
+
+        
+    }
+
+    function checkInfo(){
+        var pass = document.getElementById("password").value.trim();
+
+        var m = pass.length;
+
+        var string = pass.toString();
+        var numeric =0;
+        var upper = 0;
+        var lower =0;
+        var character= '';
+
+        if(m < 8 || m > 32){
+            alert("password must inbetween 8-32 charecters");
+            return false;
+        }
+
+        for(var i =0; i<string.length; i++){
+            character = string.charAt(i);
+            if(!isNaN(character*1)){
+                numeric = 1;
+
+            }
+            if(character == character.toUpperCase()){
+                upper = 1;
+            }
+            if(character == character.toLowerCase()){
+                lower = 1;
+            }
+            
+            }
+        if(numeric == 0 || upper == 0 || lower == 0){
+                alert('password must contain at least one uppercase one lowercase and one numeric value');
+                return false;
+            }
+
+        else{
+            return checkMail();
+        }
+    }
+
+    
+
+    function checkMail(){
+
+        var mail = document.getElementById("email").value.trim();
+
+        if(mail==""){
+            alert("email must be filled out")
+            return false;
+        }
+
+        var checkemail = /^([a-z0-9\.-]+)@([a-z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})$/;
+        if(checkemail.test(mail))
+        {
+            return checkContact();
+        }
+        else{
+            alert("mail invalid");
+            return false;
+        }
+
+    }
+
+    function checkContact(){
+
+        var contact = document.getElementById("contactno").value.trim();
+        if(contact==""){
+            alert("contact number must be filled out")
+            return false;
+        }
+
+        var count = contact.length;
+
+            if(count!=11){
+                alert("Contact must be 11 digit");
+                return false;
+            }
+
+            var contactno = contact.startWith("01")
+            if(contactno!=contact){
+                alert("no must startwith 01");
+                return false;
+            }
+
+            if(isNaN(contact)){
+                alert("contact number must be numeric");
+                return false;
+            }
+
+            
+            
+            
+
+        }
+    </script>
+
+</head>
+<body>
+    <h1 style="color: #005c99;">North South University</h1>
+    <h2 style="color: #005c99;">Registration Form</h3>
+    
+    <h4 style="color: #005c99;">Name: Md.Muttashim Mishel Mawn ID: 1520800042</h5>
+
+    <form name="forms" action="reg.html" method="POST">
+        
+        Username:<br>
+        <input type="text" id="username" placeholder="Enter Username"><br><br>
+        Password:<br>
+        <input type="password" id="password" placeholder="Enter Password"><br><br>
+        
+        
+        Email:<br>
+        <input type="email" id="email" placeholder="Enter Email Address"><br><br>
+        
+        Contact No:<br>
+        <input type="text" id="contactno" placeholder="Enter Contact Number"><br><br>
+
+        <button style="background-color:#5c5cd6;" onclick="return validateForm()" type="submit">Submit</button>
+        <button style="background-color: #ff4d4d;" onclick="return validateForm()" type="submit">Cancel</button>
+
+
+    </form>
+    
+</body>
+</html>
